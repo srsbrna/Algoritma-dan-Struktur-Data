@@ -6,7 +6,7 @@ public class deretNIM {
 
         System.out.print("Masukkan NIM: ");
         String nim = sc.nextLine();
-x
+
         int n = Integer.parseInt(nim.substring(nim.length() - 2));
 
         if (n < 10) {
