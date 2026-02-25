@@ -13,6 +13,13 @@ class Matakuliah25 {
         this.sks = sks;
         this.jumlahJam = jumlahJam;
     }
+
+    void cetakInfo() {
+        System.out.println("Kode : " + kode);
+        System.out.println("Nama : " + nama);
+        System.out.println("SKS : " + sks);
+        System.out.println("Jam : " + jumlahJam);
+    }
 }
 
 public class mataKuliahDemo{
@@ -46,6 +53,8 @@ public class mataKuliahDemo{
             System.out.println("Sks        : "+ arrayOfMatakuliah25[i].sks);
             System.out.println("Jumlah Jam : "+ arrayOfMatakuliah25[i].jumlahJam);
             System.out.println("-------------------------------");
+
+            arrayOfMatakuliah25[i].cetakInfo();
         }
     }
 }
