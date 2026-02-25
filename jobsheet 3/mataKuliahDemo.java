@@ -24,12 +24,17 @@ class Matakuliah25 {
 
 public class mataKuliahDemo{
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
-        Matakuliah25[] arrayOfMatakuliah25 = new Matakuliah25[3];
+        System.out.print("Jumlah Matakuliah: ");
+        int jumlah = Integer.parseInt(sc.nextLine());
+
+        Matakuliah25[] arrayOfMatakuliah25 = new Matakuliah25[jumlah];
+
         String kode, nama, dummy;
         int sks, jumlahJam;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < jumlah; i++) {
             System.out.println("Masukkan data matakuliah ke-" + (i+1));
             System.out.println("Kode       : ");
             kode = sc.nextLine();
@@ -46,7 +51,7 @@ public class mataKuliahDemo{
             arrayOfMatakuliah25[i] = new Matakuliah25(kode, nama, sks, jumlahJam);
         }
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < jumlah; i++) {
             System.out.println("Data mata kuliah ke-" + (i+1));
             System.out.println("Kode       : "+ arrayOfMatakuliah25[i].kode);
             System.out.println("Nama       : "+ arrayOfMatakuliah25[i].nama);
