@@ -7,6 +7,13 @@ import java.util.Scanner;
         public String nama;
         public String kelas;
         public float ipk;
+
+        void cetakInfo() {
+            System.out.println("NIM : " + nim);
+            System.out.println("Nama : " + nama);
+            System.out.println("Kelas : " + kelas);
+            System.out.println("IPK : " + ipk);
+            }
     }
 
     public class MahasiswaDemo {
@@ -31,14 +38,14 @@ import java.util.Scanner;
             System.out.println("-------------------------------------");
         }
 
-        for (int i=0; i<3; i++){
-            System.out.println("Data mahasiswa ke-" + (i+1));
+        for (int i=0; i<arrayOfMahasiswa25.length; i++){
+            arrayOfMahasiswa25[i].cetakInfo();
+            
             System.out.println("NIM   : " + arrayOfMahasiswa25[i].nim);
             System.out.println("Nama  : " + arrayOfMahasiswa25[i].nama);
             System.out.println("Kelas : " + arrayOfMahasiswa25[i].kelas);
             System.out.println("IPK   : " + arrayOfMahasiswa25[i].ipk);
             System.out.println("----------------------------------------------");
         }
-
     }
 }
