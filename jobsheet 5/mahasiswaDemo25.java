@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class mahasiswaDemo25 {
     public static void main(String[] args) {
-        
+
         Scanner sc = new Scanner(System.in);
         MahasiswaBerprestasi25 list = new MahasiswaBerprestasi25();
 
@@ -30,7 +30,12 @@ public class mahasiswaDemo25 {
         list.tampil();
 
         System.out.println("Data mahasiswa setelah sorting berdasarkan IPK (DESC)");
-        list.bubblesort();
+        list.bubblesort();        
+        System.out.println("\nData mahasiswa setelah sorting(DESC): ");
+        list.tampil();
+
+        System.out.println("Data yang sudah diurutkan menggunakan SELECTION SORT (ASC)");
+        list.selectionSort();
         list.tampil();
     }
 }
