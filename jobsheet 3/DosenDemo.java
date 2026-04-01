@@ -57,5 +57,19 @@ public class DosenDemo {
             d.tampil();
             System.out.println("-------------------------");    
         }
+
+        dataDosen25 data = new dataDosen25();
+
+        System.out.println("\n=== Data Semua Dosen ===");
+        data.dataSemuaDosen(arrayOfDosen);
+
+        System.out.println("\n=== Jumlah Dosen ===");
+        data.jumlahDosenPerJenisKelamin(arrayOfDosen);
+
+        System.out.println("\n=== Rerata Usia ===");
+        data.rataUsiaDosenPerJenisKelamin(arrayOfDosen);
+
+        data.infoDosenPalingTua(arrayOfDosen);
+        data.infoDosenPalingMuda(arrayOfDosen);
     }
 }
