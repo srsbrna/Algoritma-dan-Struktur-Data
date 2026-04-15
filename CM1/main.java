@@ -34,6 +34,9 @@ public class main {
             System.out.println("3. Tampilkan peminjaman");
             System.out.println("4. Urutkan berdasarkan denda");
             System.out.println("5. Cari berdasarkan NIM");
+            System.out.println("6. Tambah peminjaman");
+            System.out.println("7. Tampilkan Statistik");
+            System.out.println("8. Laporan per mahasiswa");
             System.out.println("0. Keluar");
             System.out.print("Pilih: ");
             pilih = sc.nextInt();
@@ -72,7 +75,7 @@ public class main {
                         pinjam[j + 1] = temp;
                     }
 
-                    System.out.println("\nSetelah diurutkan (Denda terbesar):");
+                    System.out.println("\nSetelah diurutkan dengan Insertion Sort (Denda terbesar):");
 
                     for (peminjaman p : pinjam) {
                         p.tampil();
@@ -83,19 +86,133 @@ public class main {
                     System.out.print("Masukkan NIM: ");
                     String cari = sc.next();
 
-                    boolean ketemu = false;
-                    for (peminjaman p : pinjam) {
-                        if (p.mhs.nim.equals(cari)) {
-                            p.tampil();
-                            ketemu = true;
+                    peminjaman[] temp = new peminjaman[pinjam.length];
+                    for (int i = 0; i < pinjam.length; i++) {
+                        temp[i] = pinjam[i];
+                    }
+
+                    for (int i = 1; i < temp.length; i++) {
+                        peminjaman key = temp[i];
+                        int j = i - 1;
+
+                        while (j >= 0 && temp[j].mhs.nim.compareTo(key.mhs.nim) > 0) {
+                            temp[j + 1] = temp[j];
+                            j--;
+                        }
+                        temp[j + 1] = key;
+                    }
+
+                    int left = 0, right = temp.length - 1;
+                    int found = -1;
+
+                    while (left <= right) {
+                        int mid = (left + right) / 2;
+
+                        int cmp = temp[mid].mhs.nim.compareTo(cari);
+
+                        if (cmp == 0) {
+                            found = mid;
+                            break;
+                        } else if (cmp < 0) {
+                            left = mid + 1;
+                        } else {
+                            right = mid - 1;
                         }
                     }
 
-                    if (!ketemu) {
-                        System.out.println("Data tidak ditemukan");
+                    if (found == -1) {
+                        System.out.println("Data tidak ditemukan!");
+                    } else {
+                        System.out.println("[Binary Search] Data ditemukan:");
+
+                        int i = found;
+
+                        
+                        while (i >= 0 && temp[i].mhs.nim.equals(cari)) {
+                            i--;
+                        }
+                        i++;
+
+                        while (i < temp.length && temp[i].mhs.nim.equals(cari)) {
+                            temp[i].tampil();
+                            i++;
+                        }
                     }
                     break;
 
+                case 6:
+                    System.out.println("Masukkan NIM: ");
+                    String nimInput = sc.next();
+
+                    mahasiswa mhsDipilih = null ;
+                    for (mahasiswa m : mhs) {
+                        if (m.nim.equals(nimInput)) {
+                            mhsDipilih = m;
+                            break;
+                        }
+                    }
+
+                    if (mhsDipilih == null) {
+                        System.out.println("NIM tidak ditemukan!");
+                        break;
+                    }
+
+                    System.out.println(("Masukkan kode buku: "));
+                    String kodeInput = sc.next();
+
+                    buku bukuDipilih = null;
+                    for (buku b : buku) {
+                        if (b.kode.equals(kodeInput)) {
+                            bukuDipilih = b;
+                            break;
+                        }
+                    }
+
+                    if (bukuDipilih == null) {
+                        System.out.println("Kode buku tidak ditemukan!");
+                        break;
+                    }
+
+                    System.out.println("Masukkan lama pinjaman: ");
+                    int lama = sc.nextInt();
+
+                    peminjaman[] baru = new peminjaman[pinjam.length + 1];
+                    for (int i = 0; i < pinjam.length; i++) {
+                        baru[i] = pinjam[i];    
+                    }
+
+                    baru[pinjam.length] = new peminjaman(mhsDipilih, bukuDipilih, lama);
+                    pinjam = baru;
+
+                    System.out.println("Data peminjaman berhasil ditambahkan!");
+                    break;
+
+                case 7:
+                    int totalDenda = 0;
+                    int terlambat = 0;
+                    int tepat = 0;
+
+                    for (peminjaman p : pinjam) {
+                        totalDenda += p.denda;
+
+                        if (p.terlambat > 0) {
+                            terlambat++;
+                        } else {
+                            tepat++;
+                        }
+                    }
+
+                    System.out.println("\n=== STATISTIK PEMINJAMAN ===");
+                    System.out.println("Total Denda: Rp " + totalDenda);
+                    System.out.println("Jumlah Terlambat: " + terlambat);
+                    System.out.println("Jumlah Tepat Waktu: " + tepat);
+                    break;
+
+                case 8:
+                    System.out.println("Laporan per mahasiswa: ");
+                    
+
+                
                 case 0:
                     System.out.println("Terima kasih!");
                     break;
@@ -103,6 +220,8 @@ public class main {
                 default:
                     System.out.println("Pilihan tidak valid!");
             }
+
+                
 
         } while (pilih != 0);
     }
