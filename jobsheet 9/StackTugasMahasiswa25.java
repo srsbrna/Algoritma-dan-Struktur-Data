@@ -51,4 +51,21 @@ public class StackTugasMahasiswa25 {
             System.out.println(stack[i].nama + " - " + stack[i].nim);
         }
     }
+
+    public String konversiDesimalKeBiner(int kode) {
+        StackKonversi25 stack = new StackKonversi25(32);
+        String biner = "";
+
+        while (kode > 0) {
+            int sisa = kode % 2;
+            stack.push(sisa);
+            kode = kode / 2;
+        }
+
+        while (!stack.isEmpty()) {
+            biner += stack.pop();
+        }
+
+        return biner;
+    }
 }
