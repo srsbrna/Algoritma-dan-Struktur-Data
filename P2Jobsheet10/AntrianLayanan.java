@@ -24,6 +24,22 @@ public class AntrianLayanan {
         System.out.println(mhs.nama + " berhasil masuk ke antrian.");
     }
 
+    public boolean IsEmpty () {
+        if (size == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean IsFull() {
+        if (size == max) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public Mahasiswa layaniMahasiswa() {
         if (IsEmpty()) {
             System.out.println("Antrian kosong.");
@@ -56,23 +72,6 @@ public class AntrianLayanan {
             int index = (front + i) % max;
             System.out.println((i+1) + ". ");
             data[index].tampilkanData();
-        }
-    }
-
-    
-    public boolean IsEmpty () {
-        if (size == 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean IsFull() {
-        if (size == max) {
-            return true;
-        } else {
-            return false;
         }
     }
 
