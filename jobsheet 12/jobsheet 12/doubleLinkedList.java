@@ -114,5 +114,4 @@ public class doubleLinkedList {
             current = current.prev;
         }
     }
-
 }
