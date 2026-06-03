@@ -28,7 +28,9 @@ public class demoArrayList {
         System.out.println(customer.name);
         customer.name = "Budi Utomo";
 
-        System.out.println(customers);
+        for (customer cust : customers) {
+            System.out.println(cust.toString());
+        }
 
     }
 }
