@@ -10,5 +10,17 @@ public class StackDemo {
         books.push(book1);
         books.push(book2);
         books.push(book3);
+
+        book temp = books.peek();
+
+        if (temp !=  null ) {
+            System.out.println();
+        }
+
+        book temp2 = books.pop();
+
+        if (temp2 != null) {
+            System.out.println(temp2.toString());
+        }
     }
 }
